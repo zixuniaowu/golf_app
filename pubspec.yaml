@@ -1,0 +1,41 @@
+name: golf_app
+description: "Golf swing analysis application"
+publish_to: 'none'
+version: 1.0.0+1
+
+# 添加此行以允许使用Android v1嵌入
+legacy_android_v1_embedding: true
+
+environment:
+  sdk: '>=3.2.6 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  camera: ^0.9.4+5  # 降级到0.9.4+5版本，避免namespace问题
+  path_provider: ^2.0.15
+  path: ^1.8.3
+  provider: ^6.1.1
+  image: ^4.1.6
+  shared_preferences: ^2.2.2
+  tflite_flutter: ^0.9.0  # TensorFlow Lite
+  tflite_flutter_helper: ^0.3.1  # Helper library
+  image_picker: ^1.0.7
+  permission_handler: ^10.0.0  # 降级到10.0.0版本，避免冲突
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+
+# 依赖重写部分 - 解决依赖冲突问题
+dependency_overrides:
+  image: ^3.0.2
+  ffi: ^1.0.0  # 添加ffi的重写以解决冲突
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/models/
